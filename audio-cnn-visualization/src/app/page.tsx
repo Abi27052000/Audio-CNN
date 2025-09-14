@@ -120,7 +120,7 @@ export default function HomePage() {
   const [error, setError] = useState<string | null>(null);
 
   const handleFileChange = async (
-    event: React.ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -138,15 +138,18 @@ export default function HomePage() {
         const base64String = btoa(
           new Uint8Array(arrayBuffer).reduce(
             (data, byte) => data + String.fromCharCode(byte),
-            ""
-          )
+            "",
+          ),
         );
 
-        const response = await fetch("inference_url_here", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ audio_data: base64String }),
-        });
+        const response = await fetch(
+          "https://abi27052000--audio-cnn-inference-audioclassifier-inference.modal.run/",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ audio_data: base64String }),
+          },
+        );
 
         if (!response.ok) {
           throw new Error(`API error ${response.statusText}`);
@@ -156,7 +159,7 @@ export default function HomePage() {
         setVizData(data);
       } catch (err) {
         setError(
-          err instanceof Error ? err.message : "An unknown error occured"
+          err instanceof Error ? err.message : "An unknown error occured",
         );
       } finally {
         setIsLoading(false);
@@ -278,9 +281,7 @@ export default function HomePage() {
                 <CardContent>
                   <Waveform
                     data={vizData.waveform.values}
-                    title={`${vizData.waveform.duration.toFixed(2)}s * ${
-                      vizData.waveform.sample_rate
-                    }Hz`}
+                    title={`${vizData.waveform.duration.toFixed(2)}s * ${vizData.waveform.sample_rate}Hz`}
                   />
                 </CardContent>
               </Card>
