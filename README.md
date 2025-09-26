@@ -18,6 +18,18 @@
 - 🎨 Modern UI with Tailwind CSS & Shadcn UI
 - ✅ Pydantic data validation for robust API requests
 
+## Demo
+
+🌐 **Try it live:** [https://audio-cnn-six.vercel.app/](https://audio-cnn-six.vercel.app/)
+
+Here are some screenshots showcasing the Audio CNN application in action:
+
+![App Demo 1](assets/Screenshot%202025-09-26%20151404.png)
+
+![App Demo 2](assets/Screenshot%202025-09-26%20151414.png)
+
+![App Demo 3](assets/Screenshot%202025-09-26%20151424.png)
+
 ## Setup
 
 Follow these steps to install and set up the project.
